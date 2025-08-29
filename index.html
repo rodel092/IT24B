@@ -7,10 +7,16 @@
 </head>
 <body>
 
-    <h1>Hello World</h1>
+    <h1>username</h1>
     
-    <input type="text" id="textbox" placeholder="Type Something Here..."
-    oninput="updateDisplay()">
+    <input type="text" id="textbox" placeholder="username"
+    oninput="displaytext()">
+    
+    <h1>Password</h1>
+    
+    <input type="password" id="password" placeholder="enter your password"
+    oninput="recordPassword()">
+
     <h1 id="displaytext">Your text will appear here</h1>
 
 <Script>
@@ -20,8 +26,18 @@ function updateDisplay(){
     var displaytext = document.getElementById("displayText");
 
     displaytext.textContent = textbox.value;
+    console.log(textbox.value +" "+ Date());
 
 }
+
+function recordPassword(){
+        var password =  documen.getElementById("password");
+        console.log(password.value +" "+Date());
+
+
+
+} 
+
 
 </Script>
 </body>

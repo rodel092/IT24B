@@ -40,7 +40,29 @@
 
   document.getElementById("taskList").appendChild(li);
         console.log("addTaskItem() called -> ",taskText,Date());
+
+        const deleteBtn = createDeleteButton(li);
+        li.appendChild(deleteBtn);
     }
+
+    function createDeleteButton(li){
+ 
+        const deleteBtn = document.createElemen("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "delete-btn";
+        deleteBtn.style.marginLeft = "8px";
+        deleteBtn.onClick = () => handleDeleteClick(li);
+
+
+        console.log("createDeleteButtom() called -> " + li.textContent);
+        return (deleteBtn);
+}
+
+function handleDeleteClick(li) {
+    console.log("handleDeleteClick() -> " + li.textContent.replace("Delete", "").trim(), Date()); 
+    li.remove();
+
+}
 
 </script>
 </body>

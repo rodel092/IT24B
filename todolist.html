@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
+    <style>
+        .done{
+            text-decoration: line-through;
+            color:gray;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
     <h1>To do list</h1>
@@ -44,6 +52,8 @@
         const deleteBtn = createDeleteButton(li);
         li.appendChild(deleteBtn);
 
+         const doneBtn = createDoneButton(li);
+        li.appendChild(doneBtn);
 
         const taskSpan = document.createElement("span");
         taskSpan.textContent = taskText;
@@ -52,9 +62,9 @@
     }
 
     function createDeleteButton(li){
- 
-        const deleteBtn = document.createElemen("button");
-        deleteBtn.textContent = "Delete";
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "x";
+        deleteBtn.textContent = " Delete ";
         deleteBtn.className = "delete-btn";
         deleteBtn.style.marginLeft = "8px";
         deleteBtn.onClick = () => handleDeleteClick(li);
@@ -76,6 +86,24 @@ function createEditButton(li,taskSpan){
         editBtn.className = "edit-btn";
         editBtn.style.marginLeft = "8px";
         editBtn.onclick = () => handleEditClick(li);
+
+function createDoneButton(li){
+        const doneBtn = document.createElement("button");
+        doneBtn.textContent = "Done";
+        doneBtn.style.marginLeft = "8px";
+        doneBtn.onclick = () =>{
+            console.log(li);
+            li.classList.add("done");
+            const buttons = li.querySelectorAll("button");
+
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                });
+
+            console.log("Task Completed", li.textContent, Date());
+        }
+        return doneBtn;
+    }
 
         console.log("createEditButton() called ->:", taskSpan.textContent);
         return editBtn;
